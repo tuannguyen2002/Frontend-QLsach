@@ -1,0 +1,12 @@
+.container-sm{
+    margin-top: 100px;
+    width: 500px;
+}
+.title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+.btn-outline-dark{
+    margin-right: 5px;
+}

@@ -1,0 +1,41 @@
+<div class="container-sm">
+    <h1 class="title">Sửa thông tin sách</h1>
+    <br>
+    <form #form="ngForm" (ngSubmit)="suaSACH()" novalidate>
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="namesach" placeholder="nhập tên sach" [(ngModel)]="EditDeleteSACH.tensach" name="namesach" required>
+          <label for="namesach">Tên sách</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example" [(ngModel)]="EditDeleteSACH.tacgiaID" name="tacgiaID" required>
+            <option *ngFor="let tg of dstg" [value]="tg.id">{{tg.tentacgia}}</option>
+          </select>
+          <label for="floatingSelect">Tác giả</label>
+        </div><br>
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example" [(ngModel)]="EditDeleteSACH.nhaxbID" name="nhaxbID" required>
+            <option *ngFor="let nxb of dsnxb" [value]="nxb.id">{{nxb.tennhaxb}}</option>
+          </select>
+          <label for="floatingSelect">Nhà xuất bản</label>
+        </div><br>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="giaban" placeholder="nhập giá bán" [(ngModel)]="EditDeleteSACH.giaban" name="giaban" (keypress)="onlyNumber($event)" required>
+          <label for="giaban">Giá bán</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="sl" placeholder="nhập số lượng" [(ngModel)]="EditDeleteSACH.soluong" name="sl" (keypress)="onlyNumber($event)" required>
+          <label for="sl">Số lượng</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="note" placeholder="Nhập ghi chú" [(ngModel)]="EditDeleteSACH.ghichu" name="note">
+          <label for="note">Ghi chú</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-outline-dark" (click)="goBack()">Hủy</a>
+        <button type="submit" class="btn btn-danger" (click)="xoaSACH()">Xóa</button>
+        <button type="submit" class="btn btn-dark" [disabled]="form.invalid">Lưu thay đổi</button>
+      </div>
+    </form>
+  </div>

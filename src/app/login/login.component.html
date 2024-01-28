@@ -1,0 +1,54 @@
+<section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid"
+            alt="Phone image">
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <form [formGroup]="loginForm">
+            <!-- Email input -->
+            <div class="text-center">
+              <h2>Đăng nhập vào tài khoản của bạn</h2>
+            </div>
+            <div class="form-outline mb-4" [class.error]="loginForm.controls['Email'].dirty && loginForm.hasError('required', 'Email')">
+              <label class="form-label" for="form1Example13">Email</label>
+              <input formControlName="Email" type="text" id="form1Example13" class="form-control form-control-lg"/>
+            </div>
+            <small *ngIf="loginForm.controls['Email'].dirty && loginForm.hasError('required', 'Email')" class="text-danger">*Email is required!</small>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-4" [class.error]="loginForm.controls['Pass'].dirty && loginForm.hasError('required', 'Pass')">
+              <label class="form-label" for="form1Example23">Password</label>
+              <input formControlName="Pass" type="password" id="form1Example23" class="form-control form-control-lg"/>
+            </div>
+            <small *ngIf="loginForm.controls['Pass'].dirty && loginForm.hasError('required', 'Pass')" class="text-danger">*Password is required!</small>
+  
+            <div class="d-flex justify-content-around align-items-center mb-4">
+              <!-- Checkbox -->
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                <label class="form-check-label" for="form1Example3"> Remember me </label>
+              </div>
+              <a href="#!">Forgot password?</a>
+            </div>
+  
+            <!-- Submit button -->
+            <div class="text-center">
+              <button (click)="onLogin()" type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+            </div>
+          </form>
+          Don't have an account? <a routerLink="/register">Register</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    .divider:after,
+    .divider:before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+  </style>

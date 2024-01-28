@@ -1,0 +1,52 @@
+<!-- Khách -->
+<div class="container">
+    <div class="row">
+
+        <div id="carouselExampleDark" class="carousel carousel-dark slide mb-5">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <img src="https://placehold.co/1400x400" class="d-block w-100" alt="sach-thieu-nhi">
+              <div class="carousel-caption d-none d-md-block">
+                <a class="title" href="#"><h2>Sách thiếu nhi</h2></a>
+                <p>sách được viết và thiết kế đặc biệt để dành cho độc giả trẻ em và thiếu nhi. Đây là những tác phẩm văn học, hình ảnh hoặc sách học tập được tạo ra để phù hợp với lứa tuổi, sự phát triển, sở thích của trẻ em, giúp họ phát triển khả năng đọc, tư duy, hiểu biết.</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="https://placehold.co/1400x400" class="d-block w-100" alt="sach-tam-ly">
+              <div class="carousel-caption d-none d-md-block">
+                <a class="title" href="#"><h2>Sách tâm lý</h2></a>
+                <p>Loại sách nghiên cứu về thế giới nội tâm của con người, tâm lý học đưa ra những gợi ý giúp chúng ta giải quyết nhiều vấn đề khác nhau trong cuộc sống.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://placehold.co/1400x400" class="d-block w-100" alt="sach-van-hoc">
+              <div class="carousel-caption d-none d-md-block">
+                <a class="title" href="#"><h2>Sách văn học</h2></a>
+                <p>Loại hình sáng tác đặc biệt tái hiện lại những bình diện của cuộc sống, của xã hội và con người dưới ngòi bút trào phúng và văn hoa.</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div class=" col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mt-5" *ngFor="let sach of dssach;">
+            <div class="card" style="width: 12rem; height: 25rem;">
+                <img src="https://placehold.co/300x400" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h6 class="card-title">{{sach.tensach}}</h6>
+                  <p class="text-start" *ngIf="sach.tentacgia">{{sach.tentacgia}}</p>
+                  <p class="text-start" *ngIf="!sach.tentacgia">Lỗi load tên tác giả</p>
+                  <a href="#" class="btn btn-dark">Mua</a>
+                  <a href="#" class="btn btn-outline-dark"><i class="fas fa-cart-plus"></i></a>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

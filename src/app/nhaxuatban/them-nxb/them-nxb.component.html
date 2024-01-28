@@ -1,0 +1,29 @@
+<div class="container-sm">
+    <h1 class="title">Thêm mới nhà xuất bản</h1>
+    <br>
+    <form #form="ngForm" (ngSubmit)="themNXB()" novalidate>
+        <!-- Thêm thuộc tính 'novalidate' để ngăn chặn kiểm tra tự động của trình duyệt -->
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="nhập tên NXB" [(ngModel)]="NhaXB.tennhaxb"
+                    name="tennhaxb" required>
+                <label for="name">Tên nhà xuất bản</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="sdt" placeholder="nhập SĐT" [(ngModel)]="NhaXB.sdt" name="sdt"
+                    (keypress)="onlyNumber($event)" required>
+                <label for="sdt">SĐT</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="note" placeholder="Nhập ghi chú" [(ngModel)]="NhaXB.ghichu"
+                    name="ghichu">
+                <label for="note">Ghi chú</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a type="button" class="btn btn-outline-dark" (click)="goBack()">Hủy</a>
+            <button type="submit" class="btn btn-dark" [disabled]="form.invalid">Lưu thay đổi</button>
+            <!-- Sử dụng thuộc tính [disabled] để ngăn chặn việc nhấp vào nút khi form không hợp lệ -->
+        </div>
+    </form>
+</div>

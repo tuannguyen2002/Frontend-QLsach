@@ -1,0 +1,44 @@
+<div>
+    <div class="down">
+
+        <!-- Thêm -->
+        <a type="button" class="btn btn-dark" routerLink="themnxb">
+            <i class="fa-solid fa-plus"></i> Thêm nhà xuất bản
+        </a>
+    
+        <div class="search">
+           <input class="inpS form-control me-2" type="search" placeholder="Tìm kiếm NXB..." aria-label="Search" [(ngModel)]="searchText">
+        </div>
+        <table class="table table-striped mt-5" >
+            <thead>
+                <th scope="col">Số thứ tự</th>
+                <th scope="col">Tên nhà xuất bản</th>
+                <th scope="col">SĐT</th>
+                <th scope="col">Ghi chú</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody *ngIf="dsnxb && dsnxb.length > 0">
+                <tr *ngFor="let nxb of dsnxb | searchNXB: searchText | paginate: { itemsPerPage: itemsPPage, currentPage: firstPage } ; let i = index" >
+                    <td>{{i + dem + 1}}</td>
+                    <td>{{nxb.tennhaxb}}</td>
+                    <td>{{nxb.sdt}}</td>
+                    <td>{{nxb.ghichu}}</td>
+                    <td>
+                        <!-- Sửa xóa -->
+                        <a type="button" class="btn btn-outline-dark" routerLink="suanxb" [routerLink]="['/nhaxuatban', 'suaxoanxb', nxb.id]">
+                            <i class="fa-solid fa-eye"></i> Chi tiết
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="paginate">
+            <pagination-controls (pageChange)="firstPage = $event"></pagination-controls>
+          </div>
+    </div>
+    
+    <p *ngIf="!dsnxb || dsnxb.length <= 0">Không tìm thấy dữ liệu!</p>
+</div>
+
+

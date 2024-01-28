@@ -1,0 +1,43 @@
+<div class="down">
+
+    <!-- Thêm -->
+    <a type="button" class="btn btn-dark" routerLink="themtacgia">
+        <i class="fa-solid fa-plus"></i> Thêm tác giả
+    </a>
+
+    <div class="search">
+        <input class="inpS form-control me-2" type="search" placeholder="Tìm kiếm tác giả..." aria-label="Search" [(ngModel)]="searchText">
+     </div>
+
+    <table class="table table-striped mt-5" *ngIf="dstg && dstg.length > 0">
+        <thead>
+            <th scope="col">Số thứ tự</th>
+            <th scope="col">Tên tác giả</th>
+            <th scope="col">Quê quán</th>
+            <th scope="col">Ghi chú</th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tg of dstg | searchTG: searchText | paginate: { itemsPerPage: itemsPPage, currentPage: firstPage }; let i = index">
+                <td>{{i + dem + 1}}</td>
+                <td>{{tg.tentacgia}}</td>
+                <td>{{tg.quequan}}</td>
+                <td>{{tg.ghichu}}</td>
+                <td>
+
+                    <!-- Sửa xóa -->
+                    <a type="button" class="btn btn-outline-dark" routerLink="suanxb" [routerLink]="['/tacgia', 'suaxoatacgia', tg.id]">
+                        <i class="fa-solid fa-eye"></i> Chi tiết
+                    </a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="paginate">
+        <pagination-controls (pageChange)="firstPage = $event"></pagination-controls>
+      </div>
+</div>
+
+<p *ngIf="!dstg || dstg.length <= 0">Không tìm thấy dữ liệu!</p>

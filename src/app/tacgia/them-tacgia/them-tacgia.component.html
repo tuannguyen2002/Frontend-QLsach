@@ -1,0 +1,28 @@
+<div class="container-sm">
+    <h1 class="title">Thêm mới tac giả</h1>
+    <br>
+    <form #form="ngForm" (ngSubmit)="themTG()" novalidate>
+        <!-- Thêm thuộc tính 'novalidate' để ngăn chặn kiểm tra tự động của trình duyệt -->
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="nhập tên tác giả" [(ngModel)]="tacGia.tentacgia"
+                    name="name" required>
+                <label for="name">Tên tác giả</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="que" placeholder="nhập quê quán" [(ngModel)]="tacGia.quequan" name="que" required>
+                <label for="que">Quê quán</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="note" placeholder="Nhập ghi chú" [(ngModel)]="tacGia.ghichu"
+                    name="ghichu">
+                <label for="note">Ghi chú</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a type="button" class="btn btn-outline-dark" (click)="goBack()">Quay lại</a>
+            <button type="submit" class="btn btn-dark" [disabled]="form.invalid">Lưu thay đổi</button>
+            <!-- Sử dụng thuộc tính [disabled] để ngăn chặn việc nhấp vào nút khi form không hợp lệ -->
+        </div>
+    </form>
+</div>

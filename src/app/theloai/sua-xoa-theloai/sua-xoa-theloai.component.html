@@ -1,0 +1,24 @@
+<div class="container-md">
+    <h1 class="title">Cập nhật thông tin thể loại</h1>
+    <br>
+    <form #form="ngForm" (ngSubmit)="suaTL()" novalidate>
+        <!-- Thêm thuộc tính 'novalidate' để ngăn chặn kiểm tra tự động của trình duyệt -->
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="nhập tên thể loại" [(ngModel)]="EditDeleteTL.tentheloai"
+                    name="name" required>
+                <label for="name">Tên nhà xuất bản</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="note" placeholder="Nhập ghi chú" [(ngModel)]="EditDeleteTL.ghichu"
+                    name="note">
+                <label for="note">Ghi chú</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a type="button" class="btn btn-outline-dark" (click)="goBack()">Hủy</a>
+            <button type="submit" class="btn btn-danger" (click)="xoaTL()">Xóa</button>
+            <button type="submit" class="btn btn-dark" [disabled]="form.invalid">Lưu thay đổi</button>
+        </div>
+    </form>
+</div>
