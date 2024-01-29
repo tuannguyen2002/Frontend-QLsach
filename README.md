@@ -1,3 +1,7 @@
+# First of all
+
+open terminal and run `npm install` to install all module using in project
+
 # QLsachFE
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
