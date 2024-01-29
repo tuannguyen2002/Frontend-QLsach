@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NgToastModule } from 'ng-angular-popup';
 
 import { NhaxuatbanComponent } from './nhaxuatban/nhaxuatban.component';
 import { DsNxbComponent } from './nhaxuatban/ds-nxb/ds-nxb.component';
@@ -89,6 +90,7 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Nxb } from 'src/app/models/nxb.model';
 import { SharedService } from 'src/app/shared.service';
 
@@ -18,7 +19,11 @@ export class SuaXoaNxbComponent implements OnInit {
     ghichu: '',
   }
 
-  constructor(private router: Router, private route: ActivatedRoute, private service: SharedService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private service: SharedService,
+    private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.getID();
@@ -44,8 +49,12 @@ export class SuaXoaNxbComponent implements OnInit {
 
   suaNXB(){
     this.service.SuaNXB(this.EditDeleteNXB.id, this.EditDeleteNXB).subscribe({
-      next:(res) => {
+      next:(resNXB) => {
+        this.toast.success({detail: "THÀNH CÔNG", summary: "Cập nhật thông tin thành công.", duration:4000})
         this.router.navigate(['/nhaxuatban']);
+      },
+      error:(err) => {
+        this.toast.error({detail: "LỖI", summary: "Có lỗi xảy ra, vui lòng thử lại.", duration:4000})
       }
     })
   }
@@ -53,7 +62,11 @@ export class SuaXoaNxbComponent implements OnInit {
   xoaNXB(){
     this.service.XoaNXB(this.EditDeleteNXB.id).subscribe({
       next:(res) => {
+        this.toast.success({detail: "THÀNH CÔNG", summary: "Xóa thành công.", duration:4000})
         this.router.navigate(['/nhaxuatban']);
+      },
+      error:(err) => {
+        this.toast.error({detail: "LỖI", summary: "Có lỗi xảy ra, vui lòng thử lại.", duration:4000})
       }
     })
   }

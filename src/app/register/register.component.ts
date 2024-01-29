@@ -3,17 +3,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
 import ValidateForm from '../helpers/validateform';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
+//-----------------------------------------------
+//      admin account
+//      email: admin@admin.com
+//      pass : admin123
+//-----------------------------------------------
+
+
 export class RegisterComponent implements OnInit {
 
   signupForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: SharedService, private router: Router) { }
+  constructor(
+    private fb: FormBuilder,
+    private auth: SharedService,
+    private router: Router,
+    private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -27,15 +40,14 @@ export class RegisterComponent implements OnInit {
 
   onSignup(){
     if(this.signupForm.valid){
-      console.log(this.signupForm.value);
 
       this.auth.signUp(this.signupForm.value).subscribe({
         next: (res) => {
-          alert(res.message);
+          this.toast.success({detail: "SUCCESS", summary: res.message, duration:4000})
           this.router.navigate(['/login']);
         },
         error: (err) => {
-          alert(err?.error.message)
+          this.toast.error({detail: "ERROR", summary: err?.error.message, duration:4000})
         }
       })
     }else{
